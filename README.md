@@ -1,4 +1,4 @@
-# Quick LEMP stack Installer srcipt
+# Quick install LEMP
 
 Supported Operating Systems:
 
