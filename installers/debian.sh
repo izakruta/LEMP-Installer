@@ -7,6 +7,7 @@ MYSQL_ROOT_PASSWORD=$1
 #updating packages
 echo -e "Updating package lists.."
 sudo apt-get -y update
+sudo apt install software-properties-common
 
 #install Ngnix
 echo -e "Installing Ngnix server..."
@@ -20,7 +21,8 @@ sudo debconf-set-selections <<<"mysql-server mysql-server/root_password_again pa
 sudo apt-get -y install mysql-server
 
 #add ondrej PPA
-sudo add-apt-repository ppa:ondrej/php -y
+sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/nginx -y
+sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
 sudo apt-get update
 
 #install Mysql server
@@ -29,10 +31,7 @@ sudo apt-get -y install php7.3-fpm php-mysql
 
 #install PHP extensions
 echo -e "Installing PHP extensions..."
-sudo apt install php-pear php7.3-curl php7.3-dev php7.3-gd php7.3-mbstring php7.3-zip php7.3-mysql php7.3-xml php7.3-fpm libapache2-mod-php7.3 php7.3-imagick php7.3-recode php7.3-tidy php7.3-xmlrpc php7.3-intl
-
-#restart MGINX
-sudo systemctl restart nginx
+sudo apt install php-pear php7.3-curl php7.3-dev php7.3-gd php7.3-mbstring php7.3-zip php7.3-mysql php7.3-xml php7.3-fpm libapache2-mod-php7.3 php7.3-imagick php7.3-recode php7.3-tidy php7.3-xmlrpc php7.3-intl -y
 
 #install composer
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
